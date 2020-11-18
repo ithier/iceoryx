@@ -51,13 +51,18 @@ class DataReader
     virtual iox::cxx::optional<uint64_t> peekNextSize() = 0;
 
     ///
+    /// @brief hasNewSamples Checks if new samples ready to take.
+    /// @return True if new samples available.
+    ///
+    virtual bool hasNewSamples() = 0;
+
+    ///
     /// @brief take Take the next available sample from the DDS data space.
     /// @param buffer Receive buffer in which sample will be stored.
     /// @param bufferSize Size of the provided buffer.
     /// @return Error if unsuccessful.
     ///
     virtual iox::cxx::expected<DataReaderError> takeNext(uint8_t* const buffer, const uint64_t& bufferSize) = 0;
-
 
     ///
     /// @brief take Take up to a maximum number of samples from the DDS data space.

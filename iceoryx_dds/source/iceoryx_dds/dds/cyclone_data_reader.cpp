@@ -50,7 +50,7 @@ void iox::dds::CycloneDataReader::connect() noexcept
 }
 
 iox::cxx::optional<uint64_t> iox::dds::CycloneDataReader::peekNextSize()
-{
+{  
     // ensure to only read sample - do not take
     auto readSamples = m_impl.select().max_samples(1u).state(::dds::sub::status::SampleState::any()).read();
 
@@ -68,6 +68,12 @@ iox::cxx::optional<uint64_t> iox::dds::CycloneDataReader::peekNextSize()
 
     // no valid samples available
     return iox::cxx::nullopt_t();
+}
+
+bool iox::dds::CycloneDataReader::hasNewSamples()
+{
+    auto samples = m_impl.select().max_samples(1u).state(::dds::sub::status::SampleState::any()).read();
+    return samples.length() > 0;
 }
 
 iox::cxx::expected<iox::dds::DataReaderError> iox::dds::CycloneDataReader::takeNext(uint8_t* const buffer,

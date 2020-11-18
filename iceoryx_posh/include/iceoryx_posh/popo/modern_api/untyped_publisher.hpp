@@ -31,7 +31,7 @@ class UntypedPublisherImpl : public base_publisher_t
     UntypedPublisherImpl& operator=(const UntypedPublisherImpl&) = delete;
     UntypedPublisherImpl(UntypedPublisherImpl&& rhs) = default;
     UntypedPublisherImpl& operator=(UntypedPublisherImpl&& rhs) = default;
-    ~UntypedPublisherImpl() = default;
+    virtual ~UntypedPublisherImpl() = default;
 
     uid_t getUid() const noexcept;
     capro::ServiceDescription getServiceDescription() const noexcept;
