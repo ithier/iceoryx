@@ -50,6 +50,7 @@ inline void Iceoryx2DDSGateway<channel_t, gateway_t>::loadConfiguration(const co
             setupChannel(serviceDescription);
         }
     }
+    LogDebug() << "[Iceoryx2DDSGateway] Configuration complete.";
 }
 
 template <typename channel_t, typename gateway_t>
@@ -115,6 +116,7 @@ cxx::expected<channel_t, gw::GatewayError>
 Iceoryx2DDSGateway<channel_t, gateway_t>::setupChannel(const capro::ServiceDescription& service) noexcept
 {
     return this->addChannel(service).and_then([](channel_t channel) {
+        LogDebug() << "Channel created.";
         auto subscriber = channel.getIceoryxTerminal();
         auto dataWriter = channel.getExternalTerminal();
         subscriber->subscribe(SUBSCRIBER_CACHE_SIZE);

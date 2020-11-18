@@ -45,6 +45,7 @@ inline void DDS2IceoryxGateway<channel_t, gateway_t>::loadConfiguration(const co
             setupChannel(serviceDescription);
         }
     }
+    LogDebug() << "[DDS2IceoryxGateway] Configuration complete.";
 }
 
 template <typename channel_t, typename gateway_t>
