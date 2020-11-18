@@ -58,7 +58,7 @@ class Sample
     /// @brief header Retrieve the header of the underlying memory chunk loaned to the sample.
     /// @return The ChunkHeader of the underlying memory chunk.
     ///
-    mepoo::ChunkHeader* getHeader() noexcept;
+    mepoo::ChunkHeader* header() noexcept;
 
     ///
     /// @brief publish Publish the sample via the publisher from which it was loaned and automatically
@@ -97,7 +97,7 @@ class Sample<const T>
 
     const T* operator->() noexcept;
     const T* get() noexcept;
-    const mepoo::ChunkHeader* getHeader() noexcept;
+    const mepoo::ChunkHeader* header() noexcept;
 
   private:
     cxx::unique_ptr<T> m_samplePtr{[](T* const) {}}; // Placeholder. This is overwritten on sample construction.

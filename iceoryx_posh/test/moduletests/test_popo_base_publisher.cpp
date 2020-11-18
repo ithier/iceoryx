@@ -138,7 +138,7 @@ TEST_F(BasePublisherTest, LoanedSamplesContainPointerToChunkHeader)
     // ===== Test ===== //
     auto result = sut.loan(sizeof(DummyData));
     // ===== Verify ===== //
-    EXPECT_EQ(chunk, result.get_value().getHeader());
+    EXPECT_EQ(chunk, result.get_value().header());
     // ===== Cleanup ===== //
     iox::cxx::alignedFree(chunk);
 }

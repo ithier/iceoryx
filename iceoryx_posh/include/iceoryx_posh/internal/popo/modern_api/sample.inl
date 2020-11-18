@@ -69,7 +69,7 @@ inline T* Sample<T>::get() noexcept
 }
 
 template <typename T>
-inline mepoo::ChunkHeader* Sample<T>::getHeader() noexcept
+inline mepoo::ChunkHeader* Sample<T>::header() noexcept
 {
     return mepoo::convertPayloadPointerToChunkHeader(m_samplePtr.get());
 }
@@ -142,7 +142,7 @@ inline const T* Sample<const T>::get() noexcept
 }
 
 template <typename T>
-inline const mepoo::ChunkHeader* Sample<const T>::getHeader() noexcept
+inline const mepoo::ChunkHeader* Sample<const T>::header() noexcept
 {
     return mepoo::convertPayloadPointerToChunkHeader(m_samplePtr.get());
 }
